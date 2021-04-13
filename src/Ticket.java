@@ -12,19 +12,17 @@ public class Ticket {
     private String classType;
 
 
-    public Ticket (String departureCity, String arrivalCity, String flightId, int seatNum, String name, double price, String duration, String classType, double seatUpcharge){
-        
-        
-        
-        this.departureCity = departureCity;
-        this.arrivalCity = arrivalCity;
-        this.flightId = flightId;
+    public Ticket (Flight chosenFlight, int seatNum, String name){
+
+        this.departureCity = chosenFlight.getSourceCity();
+        this.arrivalCity = chosenFlight.getDestinationCity();
+        this.flightId = chosenFlight.getIdentifier();
         this.seatNum = seatNum;
         this.name = name;
-        this.seatCharge = seatUpcharge;
-        this.totalPrice = price + seatUpcharge;
-        this.duration = duration;
-        this.classType = classType;
+        this.seatCharge = chosenFlight.getSeatUpcharge(seatNum);
+        this.totalPrice = chosenFlight.getPrice() + seatCharge;
+        this.duration = chosenFlight.getFlightTime();
+        this.classType = chosenFlight.getSeatList().get(seatNum - 1).getClassType();
     }
 
     public void setSeatNum(int seatNum) {
@@ -59,6 +57,7 @@ public class Ticket {
         this.name = null;
         this.totalPrice = 0;
         this.duration = null;
+        this.classType = null;
    }
    
    public void print() {
