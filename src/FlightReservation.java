@@ -56,7 +56,7 @@ public class FlightReservation {
             int selection = 0;
             //args will have to change if we make an array(list) of tickets
             TicketChanges changes = new TicketChanges(ticket1, chosenFlight, selection);
-            if(changes.check().equalsIgnoreCase("y")) {
+            if(changes.check().trim().equalsIgnoreCase("y")) {
                 
                 do {
 
@@ -78,7 +78,7 @@ public class FlightReservation {
             System.out.print("Would you like to book a new flight? (Y/N)");
             repeat = in.next();
             //in.close();
-        } while (repeat.equalsIgnoreCase("y"));
+        } while (repeat.trim().equalsIgnoreCase("y"));
         System.out.println("Thank you for flying with us!");
         //in.close();
         //closes scanner
@@ -125,7 +125,7 @@ public class FlightReservation {
         //in.close();
         int objectIndex = 0;
         while (objectIndex < flights.size()) {
-            if (flights.get(objectIndex).getIdentifier().equalsIgnoreCase(flightSelection)) {
+            if (flights.get(objectIndex).getIdentifier().trim().equalsIgnoreCase(flightSelection)) {
                 break;
             }
             objectIndex++;
@@ -140,14 +140,14 @@ public class FlightReservation {
     public static Ticket reserveSeat(Flight chosenFlight) {
 
         chosenFlight.getOpenSeats();
-        //TODO need input validation 
+        //TODO need input validation / add in .trim() with that
         Scanner in = new Scanner(System.in);
         System.out.println("");
         System.out.print("Which seat would you like to reserve?");
         int seatSelection = in.nextInt();
         System.out.print("Who will be flying with us?");
         in.nextLine();
-        String name = in.nextLine();
+        String name = in.nextLine().trim();
         chosenFlight.reserveSeat(seatSelection, name);
         //in.close();
         return new Ticket(chosenFlight.getSourceCity(), chosenFlight.getDestinationCity(), chosenFlight.getIdentifier(), seatSelection, name, chosenFlight.getPrice(), chosenFlight.getFlightTime(), chosenFlight.getSeatList().get(seatSelection - 1).getClassType(), chosenFlight.getSeatUpcharge(seatSelection));
