@@ -54,8 +54,7 @@ public class TicketChanges {
             }
             case 3 : {
                 ticket1.cancelTicket();
-                ticket1.print();
-                System.out.println("Ticket canceled.");
+                System.out.println("---Ticket canceled---");
                 break;
             }
             default : System.out.println("No valid selection");
