@@ -10,7 +10,7 @@ public class InputCheck {
 
 
 	public InputCheck(ArrayList<City> cities){
-        //todo spaces before input causes improper input
+
 	    Scanner in = new Scanner(System.in);
         //for departure
         while(!validDepature){
@@ -22,7 +22,7 @@ public class InputCheck {
             int pos = 0;
             boolean found = false;
             while (pos < cities.size() && !found) {
-                if (cities.get(pos).getName().equalsIgnoreCase(city)) {
+                if (cities.get(pos).getName().equalsIgnoreCase(city.trim())) {
                     found = true;
                     departureCityIndex = pos; // for Bradley's class
                 } else {
@@ -46,7 +46,7 @@ public class InputCheck {
             int pos = 0;
             boolean found = false;
             while (pos < cities.size() && !found) {
-                if (cities.get(pos).getName().equalsIgnoreCase(city)) {
+                if (cities.get(pos).getName().equalsIgnoreCase(city.trim())) {
                     found = true;
                     arrivalCityIndex = pos; // for Bradley's class
                 } else {
