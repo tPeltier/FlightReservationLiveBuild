@@ -46,7 +46,7 @@ public class TicketChanges {
                 int newSeat = in.nextInt();
                 chosenFlight.reserveSeat(newSeat, ticket1.getName());
                 //do we need another obj? 
-                Ticket ticket2 = new Ticket(chosenFlight.getSourceCity(), chosenFlight.getDestinationCity(), chosenFlight.getIdentifier(), newSeat, ticket1.getName(), chosenFlight.getPrice(), chosenFlight.getFlightTime(), chosenFlight.getSeatList().get(newSeat - 1).getClassType(), chosenFlight.getSeatUpcharge(newSeat));
+                Ticket ticket2 = new Ticket(chosenFlight, newSeat, ticket1.getName());
                 System.out.println();
                 System.out.println("Seat has been successfully changed.");
                 ticket2.print();
