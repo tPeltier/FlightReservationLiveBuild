@@ -17,58 +17,36 @@ public class FlightReservation {
         String repeat = "";
         do {
            
-            FlightManager fm = new FlightManager();
-            ArrayList<City> cities = fm.getFlightCityList();
-            fm.displayFlightCities();
+            FlightManager flightManager = new FlightManager();
+            ArrayList<City> cities = flightManager.getFlightCityList();
+            flightManager.displayFlightCities();
             
             //scanner obj
             Scanner in = new Scanner(System.in);
             
-            //todo can currently fly from and to the same city
-            //gets and check input on declaration .....
 
-            InputCheck inputCheck = new InputCheck(cities);
-            inputCheck.runInputCheck();
 
-            City departureCity = cities.get(inputCheck.getDepartureCityIndex());
-            City arrivalCity = cities.get(inputCheck.getArrivalCityIndex());
+            CityInputCheck cityInputCheck = new CityInputCheck(cities);
+            cityInputCheck.runInputCheck();
+
+            City departureCity = cities.get(cityInputCheck.getDepartureCityIndex());
+            City arrivalCity = cities.get(cityInputCheck.getArrivalCityIndex());
             
-            fm.setDepartureCity(departureCity);
-            fm.setArrivalCity(arrivalCity);
+            flightManager.setDepartureCity(departureCity);
+            flightManager.setArrivalCity(arrivalCity);
            
-            fm.createFlights();
-            fm.displayFlights();
-            Flight chosenFlight = fm.retrieveFlight();
+            flightManager.createFlights();
+            flightManager.displayFlights();
+            Flight chosenFlight = flightManager.retrieveFlight();
 
-            Ticket ticket1 = reserveSeat(chosenFlight, fm);
+            Ticket ticket1 = seatNameTicket(chosenFlight, flightManager);
             ticket1.print();
 
-            String makeChanges = "";
-            int selection = 0;
-            //args will have to change if we make an array(list) of tickets
-            TicketChanges changes = new TicketChanges(ticket1, chosenFlight, selection);
+            TicketChanges test = new TicketChanges(ticket1, chosenFlight);
 
-            
+            test.changeLoop(ticket1, chosenFlight);
 
-
-            if(changes.check().trim().equalsIgnoreCase("y")) {
-                
-
-                do {
-                    //todo maybe add the ability to change cities for style points?
-                    changes.print();
-                    int userSelection = changes.getSelection();
-                    changes.cases(ticket1, chosenFlight, userSelection);
-
-                    if (userSelection == 3) {
-
-                        break;
-                    }
-                    
-                } while (changes.check().equalsIgnoreCase("y"));
-
-            }
-            System.out.printf("%n Your final ticket: %n");
+            System.out.printf("%n ---Your final ticket--- %n");
             ticket1.print();
             System.out.print("Would you like to book a new flight? (Y/N)");
             repeat = in.next();
@@ -86,7 +64,7 @@ public class FlightReservation {
         
     }//end main
 
-    public static Ticket reserveSeat(Flight chosenFlight, FlightManager fm) {
+    public static Ticket seatNameTicket(Flight chosenFlight, FlightManager fm) {
         chosenFlight.getOpenSeats();
         //TODO need input validation / add in .trim() with that
         Scanner in = new Scanner(System.in);

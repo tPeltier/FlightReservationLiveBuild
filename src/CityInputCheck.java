@@ -2,7 +2,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class InputCheck {
+public class CityInputCheck {
 
     private String cityArrival;
     private String cityDeparture;
@@ -17,9 +17,8 @@ public class InputCheck {
     Scanner in = new Scanner(System.in);
 
     //todo -----refactor----- maybe break into classes?
-    //todo check arrival against departure and if same don't allow
-    public InputCheck(ArrayList<City> cities) {
-        System.out.println(validDeparture);
+
+    public CityInputCheck(ArrayList<City> cities) {
         this.cities = cities;
     }
 
@@ -113,27 +112,22 @@ public class InputCheck {
     }
 
     private void duplicateCityCheck() {
-        
         boolean duplicateFound;
-        
         do
         {
-        if(departureCityIndex == arrivalCityIndex)
-        {
-            duplicateFound = true;
-            validArrival = false; validDeparture = false;
-            System.out.println("You can not have the same arrival and destination city.");
-            System.out.println("Please enter new cities from the list.");
-            ArrivalInputCheck();
-            DepartureInputCheck();
-        }
-        else
-        {
-            duplicateFound = false;
-        }
+            if(departureCityIndex == arrivalCityIndex)
+                {
+                    duplicateFound = true;
+                    validArrival = false; validDeparture = false;
+                    System.out.println("You can not have the same arrival and destination city.");
+                    System.out.println("Please enter new cities from the list.");
+                    ArrivalInputCheck();
+
+                }
+            else
+                {
+                    duplicateFound = false;
+                }
         } while(duplicateFound);
     }
-
-
-
 }

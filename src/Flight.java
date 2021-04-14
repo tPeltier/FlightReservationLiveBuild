@@ -123,7 +123,7 @@ class Flight {
 
     public void cancelSeatReservation(int seatNumber) {
         seatList.get(seatNumber - 1).cancelReservation();
-        System.out.println("Your seat reservation has been successfully canceled");
+        //System.out.println("Your seat reservation has been successfully canceled");
     }
 
     public void getPassengerName(int seatNumber) {

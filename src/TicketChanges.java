@@ -5,19 +5,37 @@ public class TicketChanges {
     private int changeSelection;
 
     Scanner in = new Scanner(System.in);
-	public String check(){
+    public  void  changeLoop(Ticket ticket1,Flight chosenFlight){
+        makeChanges = "";
+        int selection = 0;
+        check();
+        //args will have to change if we make an array(list) of tickets
+        if(makeChanges.trim().equalsIgnoreCase("y")) {
+            do {
+                //todo maybe add the ability to change cities for style points?
+                print();
+                int userSelection = getSelection();
+                cases(ticket1, chosenFlight, userSelection);
+                if (userSelection == 3) {
+                    break;
+                }
+            } while (makeChanges.equalsIgnoreCase("y"));
+
+        }
+    }
+
+	private String check(){
 		System.out.print("Would you like to make any changes to your reservation? (Y/N)");
-		//Scanner	in = new Scanner(System.in);
 		makeChanges = in.next();
 		return makeChanges;
 	}
-    public void print(){
+    private void print(){
         System.out.println("What would you like to change on your ticket?");
         System.out.println("Press 1 to change the name on the ticket");
         System.out.println("Press 2 to change the reserved seat");
         System.out.println("Press 3 to cancel your ticket");
     }
-    public int getSelection(){
+    private int getSelection(){
         //Scanner in = new Scanner(System.in);
         changeSelection = in.nextInt();
         System.out.print("Your selection:" + changeSelection);
@@ -27,7 +45,6 @@ public class TicketChanges {
 
 
     public void cases(Ticket ticket1, Flight chosenFlight, int changeSelection){
-        //intelij suggested this, an enhanced switch
         switch (changeSelection) {
             case 1 : {
                 System.out.print("Enter a new name: ");
@@ -61,8 +78,7 @@ public class TicketChanges {
         }
     }
 
-	public TicketChanges(Ticket ticket1, Flight chosenFlight, int changeSelection){
-        
+	public TicketChanges(Ticket ticket1, Flight chosenFlight){
 
     }
 }

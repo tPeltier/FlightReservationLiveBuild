@@ -22,7 +22,7 @@ public class City {
         return longitude;
     }
     
-      public String getName()
+    public String getName()
     {
         return name;
     }

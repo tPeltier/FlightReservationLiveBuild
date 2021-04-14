@@ -46,6 +46,8 @@ class FlightManager {
     }
 
     public void displayFlights() {
+        System.out.println();
+        System.out.println("---Available Flights---");
         for (int i = 0; i < flights.size(); i++) {
             flights.get(i).getFlightInfo();
         }
