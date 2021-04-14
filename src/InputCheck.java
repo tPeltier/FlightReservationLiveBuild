@@ -126,8 +126,6 @@ public class InputCheck {
             System.out.println("Please enter new cities from the list.");
             ArrivalInputCheck();
             DepartureInputCheck();
-            System.out.println(departureCityIndex);
-            System.out.println(arrivalCityIndex);
         }
         else
         {
