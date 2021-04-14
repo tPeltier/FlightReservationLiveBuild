@@ -11,8 +11,10 @@ public class FlightReservation {
         //closing scanners causes java.util.NoSuchElementException
         //--see link below---
         //https://stackoverflow.com/questions/13042008/java-util-nosuchelementexception-scanner-reading-user-input
-        String repeat = "";
 
+        //todo replace missing print statements
+
+        String repeat = "";
         do {
            
             FlightManager fm = new FlightManager();
@@ -23,8 +25,11 @@ public class FlightReservation {
             Scanner in = new Scanner(System.in);
             
             //todo can currently fly from and to the same city
+            //gets and check input on declaration .....
+
             InputCheck inputCheck = new InputCheck(cities);
-        
+            inputCheck.runInputCheck();
+
             City departureCity = cities.get(inputCheck.getDepartureCityIndex());
             City arrivalCity = cities.get(inputCheck.getArrivalCityIndex());
             
@@ -50,7 +55,7 @@ public class FlightReservation {
                 
 
                 do {
-
+                    //todo maybe add the ability to change cities for style points?
                     changes.print();
                     int userSelection = changes.getSelection();
                     changes.cases(ticket1, chosenFlight, userSelection);
@@ -82,13 +87,6 @@ public class FlightReservation {
     }//end main
 
     public static Ticket reserveSeat(Flight chosenFlight, FlightManager fm) {
-
-
-
-
-   
-
-
         chosenFlight.getOpenSeats();
         //TODO need input validation / add in .trim() with that
         Scanner in = new Scanner(System.in);
@@ -106,11 +104,4 @@ public class FlightReservation {
 
 }
 
-//     calls system info display to inform user before selections are made
-//    public SystemInfoClass() {
-//        call SystemInfoClass this.departureCity = in.nextLine();
-//        display1 = new SystemInfoClass();
-//        return display1;
-//    }
-//      
 
