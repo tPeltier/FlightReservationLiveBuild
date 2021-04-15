@@ -36,7 +36,7 @@ public class FlightReservation {
 
             chosenFlight.getOpenSeats();
 
-            //TODO need input validation
+
             flightManager.setSeatInput();
             flightManager.checkSeatInput(chosenFlight);
 
