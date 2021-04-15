@@ -113,9 +113,9 @@ class FlightManager {
             System.out.println("Please enter a number");
             validInput = false;
         }
-        System.out.println("-----");//remove
+
         in.nextLine();
-        System.out.println("-----");//remove
+
     }
     public void retrySeatInput(){
         while (!validInput){
@@ -132,9 +132,9 @@ class FlightManager {
          */
         while (!validSeat) {
             retrySeatInput();
-            if (seatSelection < totalSeats) {
+            if (seatSelection < totalSeats && seatSelection > 0) {
                 validSeat = true;
-            } else if (seatSelection > totalSeats) {
+            } else if (seatSelection > totalSeats || seatSelection <= 0) {
                 System.out.println("That is not a valid seat selection.");
                 setSeatInput();
             }

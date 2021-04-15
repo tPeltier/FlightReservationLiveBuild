@@ -6,11 +6,6 @@ public class FlightReservation {
 
     public static void main(String[] args) {
 
-        //need help figuring out where to put .close() for the scanners without breaking everything...
-        //closing scanners causes java.util.NoSuchElementException
-        //--see link below---
-        //https://stackoverflow.com/questions/13042008/java-util-nosuchelementexception-scanner-reading-user-input
-
         //todo replace missing print statements
 
         String repeat = "";
