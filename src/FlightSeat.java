@@ -8,7 +8,7 @@ class FlightSeat
     protected double extraCharge;
     private String assignedCustomer;
     //todo look at below
-    //can we make seats something like #a-d?
+    //can we make seats something like row# seat a-d?
     //can we make 1st class, business, econ?
 
     public FlightSeat()

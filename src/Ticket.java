@@ -62,7 +62,7 @@ public class Ticket {
    
    public void print() {
        
-        //todo: make it pretty 
+        //todo maybe add more info like airline ?
         System.out.println("");
         System.out.println("===========|TICKET|===========");
         System.out.println("------------------------------");

@@ -12,7 +12,7 @@ public class TicketChanges {
         //args will have to change if we make an array(list) of tickets
         if(makeChanges.trim().equalsIgnoreCase("y")) {
             do {
-                //todo maybe add the ability to change cities for style points?
+
                 print();
                 int userSelection = getSelection();
                 cases(ticket1, chosenFlight, userSelection);

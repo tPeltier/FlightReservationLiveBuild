@@ -16,7 +16,7 @@ public class CityInputCheck {
 
     Scanner in = new Scanner(System.in);
 
-    //todo -----refactor----- maybe break into classes?
+
 
     public CityInputCheck(ArrayList<City> cities) {
         this.cities = cities;

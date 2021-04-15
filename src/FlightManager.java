@@ -11,7 +11,7 @@ class FlightManager {
     private ArrayList<City> cityList = new ArrayList<City>();
 
     public FlightManager() {
-
+        cityList.add(new City("Atlanta", 33.748997, -84.387985));
         cityList.add(new City("Los Angeles", 34.052235, -118.243683));
         cityList.add(new City("Chicago", 41.878113, -87.629799));
         cityList.add(new City("Dallas", 32.776665, -96.796989));

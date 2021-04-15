@@ -23,8 +23,6 @@ public class FlightReservation {
             
             //scanner obj
             Scanner in = new Scanner(System.in);
-            
-
 
             CityInputCheck cityInputCheck = new CityInputCheck(cities);
             cityInputCheck.runInputCheck();
@@ -52,16 +50,10 @@ public class FlightReservation {
             repeat = in.next();
             //in.close();
 
-      
-        
-
         } while (repeat.trim().equalsIgnoreCase("y"));
-
         System.out.println("Thank you for flying with us!");
         //in.close();
         //closes scanner
-
-        
     }//end main
 
     public static Ticket seatNameTicket(Flight chosenFlight, FlightManager fm) {
