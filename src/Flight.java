@@ -94,15 +94,12 @@ class Flight {
         int seat = 0;
 
         while (seat < numberOfSeats) {
-
             if (seatList.get(seat).getAvailability()) {
 
                 System.out.printf("Seat#   %-3s  Class: %-15s  Type:  %s %n", seat + 1, seatList.get(seat).getClassType(), seatList.get(seat).getSeatType());
                 seat++;
             }
-
         }
-
     }
 
     private double calculateDistance() {
@@ -153,11 +150,7 @@ class Flight {
         }
 
         String time = "";
-        //changed hours to hr and minutes to min 
-        //also bumped them up against the nums
-        //to make them smaller when printed out
-        //we can change it back if its not liked
-        //-tim
+
         if (hours >= 2 && minutes > 1) {
             time = hours + " hrs " + minutes + " mins";
         } else if (hours >= 2 && minutes == 1) {

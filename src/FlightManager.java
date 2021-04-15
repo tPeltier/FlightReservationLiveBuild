@@ -4,12 +4,13 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 class FlightManager {
-
+    private int seatSelection;
     private City departure;
     private City arrival;
+    private boolean validSeat = false;
     private ArrayList<Flight> flights = new ArrayList<>();
     private ArrayList<City> cityList = new ArrayList<>();
-
+    Scanner in = new Scanner(System.in);
 
     public FlightManager() {
 
@@ -99,15 +100,27 @@ class FlightManager {
             return objectIndex;
     }
 
-    public int getSeatInput()
+    public void setSeatInput()
     {
-        Scanner in = new Scanner(System.in);
         System.out.println();
         System.out.print("Which seat would you like to reserve?");
-        int seatSelection = in.nextInt();
+        seatSelection = in.nextInt();
+
+    }
+    public void checkSeatInput(Flight chosenFlight) {
+        int totalSeats = chosenFlight.getTotalSeats();
+        while (!validSeat) {
+            if (seatSelection < totalSeats) {
+                validSeat = true;
+            } else if (seatSelection > totalSeats) {
+                System.out.println("That is not a valid seat selection.");
+                setSeatInput();
+            }
+        }
+    }
+    public int getSeatInput(){
         return seatSelection;
     }
-
     public String getNameInput()
     {
         Scanner in = new Scanner(System.in);
