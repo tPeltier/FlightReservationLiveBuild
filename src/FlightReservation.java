@@ -36,7 +36,7 @@ public class FlightReservation {
 
             chosenFlight.getOpenSeats();
 
-            //TODO need input validation
+            //todo input miss match still possible
             flightManager.setSeatInput();
             flightManager.checkSeatInput(chosenFlight);
 
@@ -52,7 +52,7 @@ public class FlightReservation {
             ticket.print();
 
             TicketUpdater ticketupdater = new TicketUpdater();
-
+            //todo no seat validation
             ticketupdater.changeLoop(ticket, chosenFlight);
 
             System.out.printf("%n ---Your final ticket--- %n");
