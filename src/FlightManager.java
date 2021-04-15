@@ -110,9 +110,9 @@ class FlightManager {
     public void checkSeatInput(Flight chosenFlight) {
         int totalSeats = chosenFlight.getTotalSeats();
         while (!validSeat) {
-            if (seatSelection < totalSeats) {
+            if (seatSelection < totalSeats && seatSelection > 0) {
                 validSeat = true;
-            } else if (seatSelection > totalSeats) {
+            } else if (seatSelection > totalSeats || seatSelection <= 0) {
                 System.out.println("That is not a valid seat selection.");
                 setSeatInput();
             }
