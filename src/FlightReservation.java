@@ -1,5 +1,4 @@
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 //import jdk.javadoc.internal.doclets.formats.html.SourceToHTMLConverter;
@@ -16,19 +15,17 @@ public class FlightReservation {
 
         String repeat = "";
         do {
-           
-            FlightManager flightManager = new FlightManager();
-            ArrayList<City> cities = flightManager.getFlightCityList();
-            flightManager.displayFlightCities();
-            
-            //scanner obj
             Scanner in = new Scanner(System.in);
 
-            CityInputCheck cityInputCheck = new CityInputCheck(cities);
-            cityInputCheck.runInputCheck();
+            FlightManager flightManager = new FlightManager();
+            CityManager cityManager = new CityManager();
 
-            City departureCity = cities.get(cityInputCheck.getDepartureCityIndex());
-            City arrivalCity = cities.get(cityInputCheck.getArrivalCityIndex());
+            cityManager.displayCities();
+
+            cityManager.runInputCheck();
+
+            City departureCity = cityManager.getDepartureCity();
+            City arrivalCity = cityManager.getArrivalCity();
             
             flightManager.setDepartureCity(departureCity);
             flightManager.setArrivalCity(arrivalCity);
@@ -37,15 +34,26 @@ public class FlightReservation {
             flightManager.displayFlights();
             Flight chosenFlight = flightManager.retrieveFlight();
 
-            Ticket ticket1 = seatNameTicket(chosenFlight, flightManager);
-            ticket1.print();
+            chosenFlight.getOpenSeats();
 
-            TicketChanges test = new TicketChanges(ticket1, chosenFlight);
+            //TODO need input validation
+            int seatSelection = flightManager.getSeatInput();
+            String name = flightManager.getNameInput();
 
-            test.changeLoop(ticket1, chosenFlight);
+            chosenFlight.reserveSeat(seatSelection, name);
+
+            Ticket ticket = new Ticket(chosenFlight, seatSelection, name);
+
+            //-------------------
+
+            ticket.print();
+
+            TicketUpdater ticketupdater = new TicketUpdater();
+
+            ticketupdater.changeLoop(ticket, chosenFlight);
 
             System.out.printf("%n ---Your final ticket--- %n");
-            ticket1.print();
+            ticket.print();
             System.out.print("Would you like to book a new flight? (Y/N)");
             repeat = in.next();
             //in.close();
@@ -55,23 +63,6 @@ public class FlightReservation {
         //in.close();
         //closes scanner
     }//end main
-
-    public static Ticket seatNameTicket(Flight chosenFlight, FlightManager fm) {
-        chosenFlight.getOpenSeats();
-        //TODO need input validation / add in .trim() with that
-        Scanner in = new Scanner(System.in);
-        System.out.println("");
-        System.out.print("Which seat would you like to reserve?");
-        int seatSelection = in.nextInt();
-        System.out.print("Who will be flying with us?");
-        in.nextLine();
-        String name = in.nextLine().trim();
-        chosenFlight.reserveSeat(seatSelection, name);
-        //in.close();
-        return new Ticket(chosenFlight, seatSelection, name);
-
-    }
-
 }
 
 
