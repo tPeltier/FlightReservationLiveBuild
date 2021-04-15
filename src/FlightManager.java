@@ -7,8 +7,9 @@ class FlightManager {
 
     private City departure;
     private City arrival;
-    private ArrayList<Flight> flights = new ArrayList<Flight>();
-    private ArrayList<City> cityList = new ArrayList<City>();
+    private ArrayList<Flight> flights = new ArrayList<>();
+    private ArrayList<City> cityList = new ArrayList<>();
+
 
     public FlightManager() {
         cityList.add(new City("Atlanta", 33.748997, -84.387985));
@@ -62,9 +63,40 @@ class FlightManager {
 
         Scanner in = new Scanner(System.in);
 
-        System.out.print("Enter the flight identifier of your chosen flight: ");
-        String flightIdentifier = in.next();
+        boolean flightFound;
+        String flightIdentifier;
 
+            do {
+                System.out.print("Enter the flight identifier of your chosen flight: ");
+                flightIdentifier = in.next();
+                flightFound = verifyFlightSelection(flightIdentifier);
+                if(!flightFound)
+                {
+                    System.out.println("\nPlease check spelling and reenter the flight identifier.");
+                }
+            } while(!flightFound);
+
+            int objectIndex = getVerifiedFlightSelection(flightIdentifier);
+
+            return flights.get(objectIndex);
+
+    }
+    private boolean verifyFlightSelection(String flightIdentifier)
+    {
+        int objectIndex = 0;
+        while (objectIndex < flights.size()) {
+            if (flights.get(objectIndex).getIdentifier().equalsIgnoreCase(flightIdentifier)) {
+                return true;
+
+            }
+            objectIndex++;
+        }
+        return false;
+
+    }
+
+    private int getVerifiedFlightSelection(String flightIdentifier)
+    {
         int objectIndex = 0;
         while (objectIndex < flights.size()) {
             if (flights.get(objectIndex).getIdentifier().equalsIgnoreCase(flightIdentifier)) {
@@ -72,10 +104,7 @@ class FlightManager {
             }
             objectIndex++;
         }
-        System.out.println("");
-
-        return flights.get(objectIndex);
-
+            return objectIndex;
     }
 
     public void displayFlightCities() {
