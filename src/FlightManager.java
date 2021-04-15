@@ -1,4 +1,5 @@
 
+import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -8,6 +9,7 @@ class FlightManager {
     private City departure;
     private City arrival;
     private boolean validSeat = false;
+    private boolean validInput = true;
     private ArrayList<Flight> flights = new ArrayList<>();
     private ArrayList<City> cityList = new ArrayList<>();
     Scanner in = new Scanner(System.in);
@@ -100,16 +102,36 @@ class FlightManager {
             return objectIndex;
     }
 
-    public void setSeatInput()
-    {
+    public void setSeatInput() {
         System.out.println();
         System.out.print("Which seat would you like to reserve?");
-        seatSelection = in.nextInt();
-
+        if(in.hasNextInt()){
+            seatSelection = in.nextInt();
+            validInput = true;
+        }
+        else{
+            System.out.println("Please enter a number");
+            validInput = false;
+        }
+        System.out.println("-----");//remove
+        in.nextLine();
+        System.out.println("-----");//remove
+    }
+    public void retrySeatInput(){
+        while (!validInput){
+            setSeatInput();
+        }
     }
     public void checkSeatInput(Flight chosenFlight) {
+        retrySeatInput();
         int totalSeats = chosenFlight.getTotalSeats();
+
+        /*if everything is input correctly:
+        validSeat = false(default) incoming
+        validInput = true(since int) incoming
+         */
         while (!validSeat) {
+            retrySeatInput();
             if (seatSelection < totalSeats) {
                 validSeat = true;
             } else if (seatSelection > totalSeats) {
