@@ -2,7 +2,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class CityInputCheck {
+public class CityManager {
 
     private String cityArrival;
     private String cityDeparture;
@@ -12,14 +12,23 @@ public class CityInputCheck {
     private boolean foundDeparture;
     private boolean validArrival;
     private boolean foundArrival;
-    ArrayList<City> cities;
+    ArrayList<City> cities = new ArrayList<>();
 
     Scanner in = new Scanner(System.in);
 
 
 
-    public CityInputCheck(ArrayList<City> cities) {
-        this.cities = cities;
+    public CityManager() {
+        cities.add(new City("Atlanta", 33.748997, -84.387985));
+        cities.add(new City("Los Angeles", 34.052235, -118.243683));
+        cities.add(new City("Chicago", 41.878113, -87.629799));
+        cities.add(new City("Dallas", 32.776665, -96.796989));
+        cities.add(new City("Denver", 39.7392364, -104.9848623));
+        cities.add(new City("New York City", 40.7127281, -74.0060152));
+        cities.add(new City("San Francisco", 37.7790262, -122.4199061));
+        cities.add(new City("Seattle", 47.6038321, -122.3300624));
+        cities.add(new City("Las Vegas", 36.1672559, -115.1485163));
+        cities.add(new City("Orlando", 28.5421109, -81.3790304));
     }
 
     public void runInputCheck() {
@@ -129,5 +138,29 @@ public class CityInputCheck {
                     duplicateFound = false;
                 }
         } while(duplicateFound);
+    }
+
+    public void displayCities() {
+        System.out.println("Cities flights are available from: ");
+        System.out.println("==================================");
+        for (int i = 0; i < cities.size(); i++) {
+            System.out.println("-->" + cities.get(i).getName() + "<--");
+        }
+        System.out.println();
+    }
+
+    public ArrayList<City> getCityList()
+    {
+        return cities;
+    }
+
+    public City getArrivalCity()
+    {
+        return cities.get(arrivalCityIndex);
+    }
+
+    public City getDepartureCity()
+    {
+        return cities.get(departureCityIndex);
     }
 }

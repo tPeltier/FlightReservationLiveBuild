@@ -29,6 +29,8 @@ public class Ticket {
         this.seatNum = seatNum;
     }
 
+
+
     public void setName(String name) {
         this.name = name;
     }

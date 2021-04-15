@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class TicketChanges {
+public class TicketUpdater {
     private String makeChanges;
     private int changeSelection;
 
@@ -78,7 +78,7 @@ public class TicketChanges {
         }
     }
 
-	public TicketChanges(Ticket ticket1, Flight chosenFlight){
+	public TicketUpdater(){
 
     }
 }
