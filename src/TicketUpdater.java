@@ -7,7 +7,10 @@ public class TicketUpdater {
     Scanner in = new Scanner(System.in);
     public  void  changeLoop(Ticket ticket1,Flight chosenFlight){
         do {
-            makeChanges = check();
+            makeChanges = setMakeChanges();
+            if(setMakeChanges().trim().equalsIgnoreCase("n")){
+                break;
+            }
             print();
             int userSelection = getSelection();
             cases(ticket1, chosenFlight, userSelection);
@@ -18,7 +21,7 @@ public class TicketUpdater {
         } while(makeChanges.trim().equalsIgnoreCase("y"));
     }
 
-	private String check(){
+	private String setMakeChanges(){
 		System.out.print("Would you like to make any changes to your reservation? (Y/N)");
 		makeChanges = in.next();
 		return makeChanges;
