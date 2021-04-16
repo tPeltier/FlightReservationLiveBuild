@@ -4,6 +4,9 @@ public class TicketUpdater {
     private String makeChanges;
     private int changeSelection;
     private Scanner in = new Scanner(System.in);
+    private boolean validSeat = false;
+    private boolean validInput = true;
+    private int newSeat;
     private Ticket ticket;
     private Flight flight;
 
@@ -13,9 +16,7 @@ public class TicketUpdater {
         flight = chosenFlight;
     }
 
-
-
-    public  void  changeLoop(){
+    public  void  changeLoop(Flight chosenFlight){
         do {
             makeChanges = setMakeChanges();
             if(makeChanges.trim().equalsIgnoreCase("n")){
@@ -29,7 +30,7 @@ public class TicketUpdater {
             }
             else if (userSelection == 2)
             {
-                changeSeat();
+                changeSeat(chosenFlight);
             }
             else if (userSelection == 3) {
                 cancelTicket();
@@ -67,12 +68,14 @@ public class TicketUpdater {
         System.out.println("Name has been successfully changed.");
         ticket.print();
     }
-    public void changeSeat()
+    public void changeSeat(Flight chosenFlight)
     {
         flight.cancelSeatReservation(ticket.getSeatNum());
         flight.getOpenSeats();
         System.out.print("Enter a new seat number: ");
-        int newSeat = in.nextInt();
+        //int newSeat = in.nextInt();
+        setSeatInput();
+        checkSeatInput(chosenFlight);
         ticket.setSeatNum(newSeat);
         flight.reserveSeat(newSeat, ticket.getName());
         //do we need another obj?
@@ -80,6 +83,44 @@ public class TicketUpdater {
         System.out.println();
         System.out.println("Seat has been successfully changed.");
         ticket2.print();
+    }
+    public void setSeatInput() {
+        System.out.println();
+
+        if(in.hasNextInt()){
+            newSeat = in.nextInt();
+            validInput = true;
+        }
+        else{
+            System.out.println("Please enter a number");
+            validInput = false;
+        }
+
+        in.nextLine();
+
+    }
+    public void retrySeatInput(){
+        while (!validInput){
+            setSeatInput();
+        }
+    }
+    public void checkSeatInput(Flight chosenFlight) {
+        retrySeatInput();
+        int totalSeats = chosenFlight.getTotalSeats();
+
+        /*if everything is input correctly:
+        validSeat = false(default) incoming
+        validInput = true(since int) incoming
+         */
+        while (!validSeat) {
+            retrySeatInput();
+            if (newSeat <= totalSeats && newSeat > 0) {
+                validSeat = true;
+            } else if (newSeat > totalSeats || newSeat <= 0) {
+                System.out.println("That is not a valid seat selection.");
+                setSeatInput();
+            }
+        }
     }
     public void cancelTicket()
     {
