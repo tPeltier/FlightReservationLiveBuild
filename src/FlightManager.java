@@ -132,7 +132,7 @@ class FlightManager {
          */
         while (!validSeat) {
             retrySeatInput();
-            if (seatSelection < totalSeats && seatSelection > 0) {
+            if (seatSelection <= totalSeats && seatSelection > 0) {
                 validSeat = true;
             } else if (seatSelection > totalSeats || seatSelection <= 0) {
                 System.out.println("That is not a valid seat selection.");
