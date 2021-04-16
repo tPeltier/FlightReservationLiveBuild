@@ -61,6 +61,7 @@ public class TicketUpdater {
                 chosenFlight.getOpenSeats();
                 System.out.print("Enter a new seat number: ");
                 int newSeat = in.nextInt();
+                ticket1.setSeatNum(newSeat);
                 chosenFlight.reserveSeat(newSeat, ticket1.getName());
                 //do we need another obj? 
                 Ticket ticket2 = new Ticket(chosenFlight, newSeat, ticket1.getName());
