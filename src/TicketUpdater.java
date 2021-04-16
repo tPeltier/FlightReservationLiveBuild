@@ -6,22 +6,16 @@ public class TicketUpdater {
 
     Scanner in = new Scanner(System.in);
     public  void  changeLoop(Ticket ticket1,Flight chosenFlight){
-        makeChanges = "";
-        int selection = 0;
-        check();
-        //args will have to change if we make an array(list) of tickets
-        if(makeChanges.trim().equalsIgnoreCase("y")) {
-            do {
+        do {
+            makeChanges = check();
+            print();
+            int userSelection = getSelection();
+            cases(ticket1, chosenFlight, userSelection);
+            if (userSelection == 3) {
+                break;
+            }
 
-                print();
-                int userSelection = getSelection();
-                cases(ticket1, chosenFlight, userSelection);
-                if (userSelection == 3) {
-                    break;
-                }
-            } while (makeChanges.equalsIgnoreCase("y"));
-
-        }
+        } while(makeChanges.trim().equalsIgnoreCase("y"));
     }
 
 	private String check(){
