@@ -6,25 +6,21 @@ public class TicketUpdater {
 
     Scanner in = new Scanner(System.in);
     public  void  changeLoop(Ticket ticket1,Flight chosenFlight){
-        makeChanges = "";
-        int selection = 0;
-        check();
-        //args will have to change if we make an array(list) of tickets
-        if(makeChanges.trim().equalsIgnoreCase("y")) {
-            do {
-
-                print();
-                int userSelection = getSelection();
-                cases(ticket1, chosenFlight, userSelection);
-                if (userSelection == 3) {
-                    break;
-                }
-            } while (makeChanges.equalsIgnoreCase("y"));
-
-        }
+        do {
+            makeChanges = setMakeChanges();
+            if(makeChanges.trim().equalsIgnoreCase("n")){
+                break;
+            }
+            print();
+            int userSelection = getSelection();
+            cases(ticket1, chosenFlight, userSelection);
+            if (userSelection == 3) {
+                break;
+            }
+        } while(makeChanges.trim().equalsIgnoreCase("y"));
     }
 
-	private String check(){
+	private String setMakeChanges(){
 		System.out.print("Would you like to make any changes to your reservation? (Y/N)");
 		makeChanges = in.next();
 		return makeChanges;
@@ -61,6 +57,7 @@ public class TicketUpdater {
                 chosenFlight.getOpenSeats();
                 System.out.print("Enter a new seat number: ");
                 int newSeat = in.nextInt();
+                ticket1.setSeatNum(newSeat);
                 chosenFlight.reserveSeat(newSeat, ticket1.getName());
                 //do we need another obj? 
                 Ticket ticket2 = new Ticket(chosenFlight, newSeat, ticket1.getName());
