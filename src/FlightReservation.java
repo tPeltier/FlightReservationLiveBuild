@@ -46,9 +46,9 @@ public class FlightReservation {
 
             ticket.print();
 
-            TicketUpdater ticketupdater = new TicketUpdater();
+            TicketUpdater ticketupdater = new TicketUpdater(ticket, chosenFlight);
             //todo no seat validation
-            ticketupdater.changeLoop(ticket, chosenFlight);
+            ticketupdater.changeLoop();
 
             System.out.printf("%n ---Your final ticket--- %n");
             ticket.print();
