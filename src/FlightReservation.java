@@ -31,7 +31,7 @@ public class FlightReservation {
 
             chosenFlight.getOpenSeats();
 
-            //todo input miss match still possible
+
             flightManager.setSeatInput();
             flightManager.checkSeatInput(chosenFlight);
 
@@ -58,6 +58,10 @@ public class FlightReservation {
 
         } while (repeat.trim().equalsIgnoreCase("y"));
         System.out.println("Thank you for flying with us!");
+        System.out.println("Stay safe!");
+        System.out.println("Remember to wear a mask and practice social distancing while flying.");
+
+
         //in.close();
         //closes scanner
     }//end main
