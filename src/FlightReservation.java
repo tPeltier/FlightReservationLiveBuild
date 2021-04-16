@@ -44,12 +44,13 @@ public class FlightReservation {
 
             //-------------------
 
+            ticket.print();
 
             TicketUpdater ticketupdater = new TicketUpdater();
             //todo no seat validation
             ticketupdater.changeLoop(ticket, chosenFlight);
 
-            System.out.printf("%n ---Your ticket--- %n");
+            System.out.printf("%n ---Your final ticket--- %n");
             ticket.print();
             System.out.print("Would you like to book a new flight? (Y/N)");
             repeat = in.next();
