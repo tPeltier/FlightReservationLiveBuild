@@ -72,7 +72,6 @@ public class TicketUpdater {
         flight.cancelSeatReservation(ticket.getSeatNum());
         flight.getOpenSeats();
         System.out.print("Enter a new seat number: ");
-
         changeSeatObj.setSeatInput();
         changeSeatObj.checkSeatInput(chosenFlight);
         int newSeat = changeSeatObj.getSeatInput();
