@@ -8,7 +8,7 @@ public class TicketUpdater {
     public  void  changeLoop(Ticket ticket1,Flight chosenFlight){
         do {
             makeChanges = setMakeChanges();
-            if(setMakeChanges().trim().equalsIgnoreCase("n")){
+            if(makeChanges.trim().equalsIgnoreCase("n")){
                 break;
             }
             print();
@@ -17,7 +17,6 @@ public class TicketUpdater {
             if (userSelection == 3) {
                 break;
             }
-
         } while(makeChanges.trim().equalsIgnoreCase("y"));
     }
 
