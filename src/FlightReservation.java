@@ -52,6 +52,7 @@ public class FlightReservation {
 
             System.out.printf("%n ---Your final ticket--- %n");
             ticket.print();
+            chosenFlight.classGreeting(flightManager.getSeatInput());
             System.out.print("Would you like to book a new flight? (Y/N)");
             repeat = in.next();
             //in.close();

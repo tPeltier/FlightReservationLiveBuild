@@ -209,4 +209,9 @@ class Flight {
         System.out.printf("Airliner: %-20s Flight Identifier: %-7s Price: %.2f USD    Open Seats: %-4d Time: %2s%n", this.airline, this.flightIdentifier, this.getPrice(), this.getTotalSeats(), this.getFlightTime());
     }
 
+    public void classGreeting(int seat)
+    {
+        this.getSeatList().get(seat - 1).classGreeting();
+    }
+
 }
