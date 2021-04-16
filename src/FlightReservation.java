@@ -60,7 +60,7 @@ public class FlightReservation {
         System.out.println("Thank you for flying with us!");
         System.out.println("Stay safe!");
         System.out.println("Remember to wear a mask and practice social distancing while flying.");
-
+        //just to update commit lol
 
         //in.close();
         //closes scanner
