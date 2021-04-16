@@ -8,6 +8,10 @@ public class TicketUpdater {
     public  void  changeLoop(Ticket ticket1,Flight chosenFlight){
         do {
             makeChanges = check();
+		if(makeChanges.trim().equalsIgnoreCase("n")
+		   {
+			   break;
+		   }
             print();
             int userSelection = getSelection();
             cases(ticket1, chosenFlight, userSelection);
