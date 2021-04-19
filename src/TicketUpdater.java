@@ -4,8 +4,10 @@ public class TicketUpdater {
     private String makeChanges;
     private int changeSelection;
     private Scanner in = new Scanner(System.in);
+
     private Ticket ticket;
     private Flight flight;
+    FlightManager changeSeatObj = new FlightManager();
 
     public TicketUpdater(Ticket ticket1, Flight chosenFlight)
     {
@@ -13,9 +15,7 @@ public class TicketUpdater {
         flight = chosenFlight;
     }
 
-
-
-    public  void  changeLoop(){
+    public  void  changeLoop(Flight chosenFlight){
         do {
             makeChanges = setMakeChanges();
             if(makeChanges.trim().equalsIgnoreCase("n")){
@@ -29,7 +29,7 @@ public class TicketUpdater {
             }
             else if (userSelection == 2)
             {
-                changeSeat();
+                changeSeat(chosenFlight);
             }
             else if (userSelection == 3) {
                 cancelTicket();
@@ -67,12 +67,14 @@ public class TicketUpdater {
         System.out.println("Name has been successfully changed.");
         ticket.print();
     }
-    public void changeSeat()
+    public void changeSeat(Flight chosenFlight)
     {
         flight.cancelSeatReservation(ticket.getSeatNum());
         flight.getOpenSeats();
         System.out.print("Enter a new seat number: ");
-        int newSeat = in.nextInt();
+        changeSeatObj.setSeatInput();
+        changeSeatObj.checkSeatInput(chosenFlight);
+        int newSeat = changeSeatObj.getSeatInput();
         ticket.setSeatNum(newSeat);
         flight.reserveSeat(newSeat, ticket.getName());
         //do we need another obj?
@@ -81,6 +83,7 @@ public class TicketUpdater {
         System.out.println("Seat has been successfully changed.");
         ticket2.print();
     }
+
     public void cancelTicket()
     {
         ticket.cancelTicket();

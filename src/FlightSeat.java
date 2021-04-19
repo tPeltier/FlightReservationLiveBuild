@@ -81,4 +81,9 @@ class FlightSeat
         return extraCharge;
     }
 
+    public void classGreeting()
+    {
+        System.out.println("Thank you for flying economy!");
+    }
+
 }

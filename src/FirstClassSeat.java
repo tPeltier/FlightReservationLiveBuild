@@ -10,5 +10,8 @@ public class FirstClassSeat extends FlightSeat {
        
     }
 
-    
+    public void classGreeting()
+    {
+        System.out.println("Wow, you're fancy! Thanks for flying first class");
+    }
 }

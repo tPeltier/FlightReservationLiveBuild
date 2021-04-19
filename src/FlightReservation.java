@@ -48,10 +48,11 @@ public class FlightReservation {
 
             TicketUpdater ticketupdater = new TicketUpdater(ticket, chosenFlight);
             //todo no seat validation
-            ticketupdater.changeLoop();
+            ticketupdater.changeLoop(chosenFlight);
 
             System.out.printf("%n ---Your final ticket--- %n");
             ticket.print();
+            chosenFlight.classGreeting(flightManager.getSeatInput());
             System.out.print("Would you like to book a new flight? (Y/N)");
             repeat = in.next();
             //in.close();
@@ -60,7 +61,7 @@ public class FlightReservation {
         System.out.println("Thank you for flying with us!");
         System.out.println("Stay safe!");
         System.out.println("Remember to wear a mask and practice social distancing while flying.");
-
+        //just to update commit lol
 
         //in.close();
         //closes scanner
