@@ -43,7 +43,6 @@ public class FlightReservation {
             Ticket ticket = new Ticket(chosenFlight, seatSelection, name);
 
 
-
             ticket.print();
 
             TicketUpdater ticketupdater = new TicketUpdater(ticket, chosenFlight);
