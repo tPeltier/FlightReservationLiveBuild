@@ -42,7 +42,6 @@ public class FlightReservation {
 
             Ticket ticket = new Ticket(chosenFlight, seatSelection, name);
 
-            //-------------------
 
             ticket.print();
 
