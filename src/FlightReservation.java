@@ -2,6 +2,10 @@
 import java.util.Scanner;
 
 //import jdk.javadoc.internal.doclets.formats.html.SourceToHTMLConverter;
+
+/**
+* main class while loop 
+*/
 public class FlightReservation {
     public static void main(String[] args) {
 
