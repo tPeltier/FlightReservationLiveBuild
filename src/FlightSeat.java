@@ -1,31 +1,20 @@
 import java.util.Random;
 
-class FlightSeat
-{
+class FlightSeat {
     private boolean available;
     private String seatType;
     protected String classType;
     protected double extraCharge;
     private String assignedCustomer;
-    //todo look at below
-    //can we make seats something like row# seat a-d?
-    //can we make 1st class, business, econ?
 
-    public FlightSeat()
-    {
+    public FlightSeat() {
         available = true;
-        
         classType = "Economy";
         extraCharge = 0.0;
-
         assignedCustomer = "No One";
-
-        
         Random randomGenerator = new Random();
         int randomNumber = randomGenerator.nextInt(3) + 1;
-
-        switch(randomNumber)
-        {
+        switch(randomNumber) {
             case 1:
                 seatType = "Window";
                 break;
@@ -36,54 +25,31 @@ class FlightSeat
                 seatType = "Middle";
                 break;
         }
-        
-
-        
     }
-
- 
-
-    public boolean getAvailability()
-    {
+    public boolean getAvailability() {
         return available;
     }
-
-    public void reserveFor(String customerName)
-    {
+    public void reserveFor(String customerName) {
         assignedCustomer = customerName;
         available = false;
     }
-
-    public void cancelReservation()
-    {
+    public void cancelReservation() {
         assignedCustomer = "No One";
         available = true;
     }
-
-    
-    public String getSeatType()
-    {
+    public String getSeatType() {
         return seatType;
     }
-    
-    public String getAssignedName()
-    {
+    public String getAssignedName() {
         return assignedCustomer;
     }
-    
-    public String getClassType()
-    {
+    public String getClassType() {
         return classType;
     }
-    
-    public double getExtraCharge()
-    {
+    public double getExtraCharge() {
         return extraCharge;
     }
-
-    public void classGreeting()
-    {
-        System.out.println("Thank you for flying economy!");
+    public void classGreeting() {
+        System.out.println("---Thank you for flying economy!---");
     }
-
 }

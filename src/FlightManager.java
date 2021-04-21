@@ -17,67 +17,47 @@ class FlightManager {
     public FlightManager() {
 
     }
-
     public void setDepartureCity(City departure) {
         this.departure = departure;
     }
-
     public void setArrivalCity(City arrival) {
         this.arrival = arrival;
     }
-
     public void createFlights() {
         Random randomGenerator = new Random();
-
         int randomFlightsToCreate = randomGenerator.nextInt(8) + 3;
-
         for (int i = 0; i < randomFlightsToCreate; i++) {
-
             flights.add(new Flight(departure, arrival));
             i++;
-
         }
-
     }
-
     public void displayFlights() {
         System.out.println();
-        System.out.println("---Available Flights---");
+        System.out.println("------------------------------------------------Available Flights-------------------------------------------------");
         for (int i = 0; i < flights.size(); i++) {
             flights.get(i).getFlightInfo();
         }
-
+        System.out.println("------------------------------------------------------------------------------------------------------------------");
     }
-
     public ArrayList<Flight> getFlightList() {
         return flights;
     }
-
     public Flight retrieveFlight() {
-
         Scanner in = new Scanner(System.in);
-
         boolean flightFound;
         String flightIdentifier;
-
             do {
-                System.out.println();
-                System.out.print("Enter the flight identifier of your chosen flight: ");
+                System.out.println("Enter the flight identifier of your chosen flight: ");
                 flightIdentifier = in.next();
                 flightFound = verifyFlightSelection(flightIdentifier);
-                if(!flightFound)
-                {
-                    System.out.println("\nPlease check spelling and reenter the flight identifier.");
+                if(!flightFound) {
+                    System.out.println("---Please check spelling and re-enter the flight identifier---");
                 }
             } while(!flightFound);
-
             int objectIndex = getVerifiedFlightSelection(flightIdentifier);
-
             return flights.get(objectIndex);
-
     }
-    private boolean verifyFlightSelection(String flightIdentifier)
-    {
+    private boolean verifyFlightSelection(String flightIdentifier) {
         int objectIndex = 0;
         while (objectIndex < flights.size()) {
             if (flights.get(objectIndex).getIdentifier().equalsIgnoreCase(flightIdentifier)) {
@@ -89,9 +69,7 @@ class FlightManager {
         return false;
 
     }
-
-    private int getVerifiedFlightSelection(String flightIdentifier)
-    {
+    private int getVerifiedFlightSelection(String flightIdentifier) {
         int objectIndex = 0;
         while (objectIndex < flights.size()) {
             if (flights.get(objectIndex).getIdentifier().equalsIgnoreCase(flightIdentifier)) {
@@ -101,21 +79,17 @@ class FlightManager {
         }
             return objectIndex;
     }
-
     public void setSeatInput() {
-        System.out.println();
-        System.out.print("Which seat would you like to reserve?");
+        System.out.println("Which seat would you like to reserve?");
         if(in.hasNextInt()){
             seatSelection = in.nextInt();
             validInput = true;
         }
         else{
-            System.out.println("Please enter a number");
+            System.out.println("---Please enter a valid seat number---");
             validInput = false;
         }
-
         in.nextLine();
-
     }
     public void retrySeatInput(){
         while (!validInput){
@@ -135,7 +109,7 @@ class FlightManager {
             if (seatSelection <= totalSeats && seatSelection > 0) {
                 validSeat = true;
             } else if (seatSelection > totalSeats || seatSelection <= 0) {
-                System.out.println("That is not a valid seat selection.");
+                System.out.println("---Please enter a valid seat number---");
                 setSeatInput();
             }
         }
@@ -143,10 +117,12 @@ class FlightManager {
     public int getSeatInput(){
         return seatSelection;
     }
-    public String getNameInput()
-    {
+    public String getNameInput() {
         Scanner in = new Scanner(System.in);
-        System.out.print("Who will be flying with us?");
+        System.out.println();
+        System.out.println("---------------------------");
+        System.out.println("Who will be flying with us?");
+        System.out.println("---------------------------");
         String name = in.nextLine().trim();
         return name;
     }

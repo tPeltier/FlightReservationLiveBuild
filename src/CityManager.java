@@ -3,7 +3,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class CityManager {
-
     private String cityArrival;
     private String cityDeparture;
     private int departureCityIndex;
@@ -13,10 +12,7 @@ public class CityManager {
     private boolean validArrival;
     private boolean foundArrival;
     ArrayList<City> cities = new ArrayList<>();
-
     Scanner in = new Scanner(System.in);
-
-
 
     public CityManager() {
         cities.add(new City("Atlanta", 33.748997, -84.387985));
@@ -30,25 +26,19 @@ public class CityManager {
         cities.add(new City("Las Vegas", 36.1672559, -115.1485163));
         cities.add(new City("Orlando", 28.5421109, -81.3790304));
     }
-
     public void runInputCheck() {
         DepartureInputCheck();
         ArrivalInputCheck();
         duplicateCityCheck();
     }
-
-
     private void setCityArrival() {
-        System.out.print("Select a city from the list to arrive at:");
+        System.out.println("Select a city from the list to arrive at:");
         cityArrival = in.nextLine();
     }
-
     private void setCityDeparture() {
-        System.out.print("Select a city from the list to depart from:");
+        System.out.println("Select a city from the list to depart from:");
         cityDeparture = in.nextLine();
-       
     }
-
     private void setCityDepartureIndex() {
         foundDeparture = false;
         int pos = 0;
@@ -61,7 +51,6 @@ public class CityManager {
             }
         }
     }
-
     private void setCityArrivalIndex() {
         foundArrival = false;
         int pos = 0;
@@ -74,27 +63,24 @@ public class CityManager {
             }
         }
     }
-
     private void setValidDeparture() {
         if (foundDeparture) {
             validDeparture = true;
         } else {
-            System.out.println("Invalid arrival city. Please check spelling and make sure the city is on the list.");
+            System.out.println("---Invalid arrival city---");
+            System.out.println("---Please check spelling and make sure the city is on the list---");
             validDeparture = false;
         }
     }
-
     private void setValidArrival() {
-
         if (foundArrival) {
             validArrival = true;
         } else {
-            System.out.println("Invalid arrival city. Please check spelling and make sure the city is on the list.");
+            System.out.println("---Invalid arrival city---");
+            System.out.println("---Please check spelling and make sure the city is on the list---");
             validArrival = false;
         }
-        
     }
-
     private void DepartureInputCheck() {
         while (!validDeparture) {
             setCityDeparture();
@@ -102,7 +88,6 @@ public class CityManager {
             setValidDeparture();
         }
     }
-
     private void ArrivalInputCheck() {
         while (!validArrival) {
             setCityArrival();
@@ -110,57 +95,42 @@ public class CityManager {
             setValidArrival();
         }
     }
-
-
     public int getDepartureCityIndex() {
         return departureCityIndex;
     }
-
     public int getArrivalCityIndex() {
         return arrivalCityIndex;
     }
-
     private void duplicateCityCheck() {
         boolean duplicateFound;
-        do
-        {
-            if(departureCityIndex == arrivalCityIndex)
-                {
+        do {
+            if(departureCityIndex == arrivalCityIndex) {
                     duplicateFound = true;
                     validArrival = false; validDeparture = false;
-                    System.out.println("You can not have the same arrival and destination city.");
-                    System.out.println("Please enter new cities from the list.");
+                    System.out.println("---You can not have the same arrival and destination city---");
+                    System.out.println("---Please enter a new city from the list---");
                     ArrivalInputCheck();
-
                 }
-            else
-                {
+            else {
                     duplicateFound = false;
                 }
         } while(duplicateFound);
     }
-
     public void displayCities() {
         System.out.println("Cities flights are available from: ");
         System.out.println("==================================");
         for (int i = 0; i < cities.size(); i++) {
-            System.out.println("-->" + cities.get(i).getName() + "<--");
+            System.out.println("--> " + cities.get(i).getName() + " <--");
         }
-        System.out.println();
+        System.out.println("==================================");
     }
-
-    public ArrayList<City> getCityList()
-    {
+    public ArrayList<City> getCityList() {
         return cities;
     }
-
-    public City getArrivalCity()
-    {
+    public City getArrivalCity() {
         return cities.get(arrivalCityIndex);
     }
-
-    public City getDepartureCity()
-    {
+    public City getDepartureCity() {
         return cities.get(departureCityIndex);
     }
 }
