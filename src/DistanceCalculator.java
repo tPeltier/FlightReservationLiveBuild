@@ -1,4 +1,13 @@
+ /**
+ * calculates distance between chosen cities 
+ */
 public class DistanceCalculator {
+ /**
+ * calculates distance between chosen cities
+ * @param city1 departure city
+ * @param city2 arrival city
+ * @return distance
+ */
     public double calculateDistance(City city1, City city2) {
         double latitude1 = city1.getLatitude();
         double longitude1 = city1.getLongitude();
@@ -12,9 +21,17 @@ public class DistanceCalculator {
         distance = distance * 60 * 1.1515;
         return distance;
     }
+/**
+* @param degree
+* @return degree converted to radians
+*/
     private double degreeToRadian(double degree) {
         return degree * Math.PI / 180.0;
     }
+/**
+* @param radian
+* @return radian converted to degree
+*/
     private double radianToDegree(double radian) {
          return (radian * 180.0 / Math.PI);
     }
