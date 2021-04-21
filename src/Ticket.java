@@ -1,19 +1,15 @@
 public class Ticket {
-    
-    
-    private String departureCity;
-    private String arrivalCity;
-    private String flightId;
-    private int seatNum;
-    private String name;
-    private double totalPrice; 
-    private double seatCharge;
-    private String duration;
-    private String classType;
+   private String departureCity;
+   private String arrivalCity;
+   private String flightId;
+   private int seatNum;
+   private String name;
+   private double totalPrice;
+   private double seatCharge;
+   private String duration;
+   private String classType;
 
-
-    public Ticket (Flight chosenFlight, int seatNum, String name){
-
+   public Ticket (Flight chosenFlight, int seatNum, String name){
         this.departureCity = chosenFlight.getSourceCity();
         this.arrivalCity = chosenFlight.getDestinationCity();
         this.flightId = chosenFlight.getIdentifier();
@@ -23,18 +19,13 @@ public class Ticket {
         this.totalPrice = chosenFlight.getPrice() + seatCharge;
         this.duration = chosenFlight.getFlightTime();
         this.classType = chosenFlight.getSeatList().get(seatNum - 1).getClassType();
-    }
-
-    public void setSeatNum(int seatNum) {
+   }
+   public void setSeatNum(int seatNum) {
         this.seatNum = seatNum;
     }
-
-
-
-    public void setName(String name) {
+   public void setName(String name) {
         this.name = name;
     }
-
    public String getDepartureCity(){
        return departureCity;
    }
@@ -50,7 +41,6 @@ public class Ticket {
    public String getName(){
        return name;
    }
-   
    public void cancelTicket(){
         this.departureCity = null;
         this.arrivalCity = null;
@@ -61,9 +51,7 @@ public class Ticket {
         this.duration = null;
         this.classType = null;
    }
-   
    public void print() {
-       
         //todo maybe add more info like airline ?
         System.out.println("");
         System.out.println("===========|TICKET|===========");
@@ -79,6 +67,5 @@ public class Ticket {
         System.out.println("------------------------------");
         System.out.println("==============================");
         System.out.println("");
-
-}
+   }
 }
