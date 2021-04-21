@@ -1,7 +1,13 @@
+/**
+* introduction to the program class
+*/
 public class Introduction {
     public Introduction(){
         //empty
     }
+ /**
+ * print statemtns for user clarification
+ */
     public void printTutorial(){
         System.out.printf("%nIn this intro, we will show you how to operate and navigate through our system, to successfully reserve a ticket.%n");
         System.out.println("-----------------------------------------------------------------------------------------------------------------");
@@ -22,6 +28,9 @@ public class Introduction {
         pressEnterToContinue();
         System.out.println();
     }
+ /**
+ * allows the user to continue past the intro page
+ */
     private void pressEnterToContinue(){
         System.out.printf("---Press enter to continue---%n");
         try{
