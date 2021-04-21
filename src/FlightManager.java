@@ -3,7 +3,9 @@ import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.ArrayList;
 import java.util.Scanner;
-
+/**
+ * input checks for seat and flights
+ */
 class FlightManager {
     private int seatSelection;
     private City departure;
@@ -13,16 +15,26 @@ class FlightManager {
     private ArrayList<Flight> flights = new ArrayList<>();
     private ArrayList<City> cityList = new ArrayList<>();
     Scanner in = new Scanner(System.in);
-
+/**
+ * constructor
+ */
     public FlightManager() {
-
     }
+/**
+ * @param departure sets city
+ */
     public void setDepartureCity(City departure) {
         this.departure = departure;
     }
+/**
+ * @param arrival sets city
+ */
     public void setArrivalCity(City arrival) {
         this.arrival = arrival;
     }
+/**
+ * creates flights with a random generator
+ */
     public void createFlights() {
         Random randomGenerator = new Random();
         int randomFlightsToCreate = randomGenerator.nextInt(8) + 3;
@@ -31,6 +43,9 @@ class FlightManager {
             i++;
         }
     }
+/**
+ * prints available flights
+ */
     public void displayFlights() {
         System.out.println();
         System.out.println("------------------------------------------------Available Flights-------------------------------------------------");
@@ -39,9 +54,15 @@ class FlightManager {
         }
         System.out.println("------------------------------------------------------------------------------------------------------------------");
     }
+/**
+ * @return flights from array list
+ */
     public ArrayList<Flight> getFlightList() {
         return flights;
     }
+/**
+ * @return chosen flight
+ */
     public Flight retrieveFlight() {
         Scanner in = new Scanner(System.in);
         boolean flightFound;
@@ -57,6 +78,10 @@ class FlightManager {
             int objectIndex = getVerifiedFlightSelection(flightIdentifier);
             return flights.get(objectIndex);
     }
+/**
+* @param flightIdentifier
+* @return boolean variable result 
+*/
     private boolean verifyFlightSelection(String flightIdentifier) {
         int objectIndex = 0;
         while (objectIndex < flights.size()) {
@@ -67,8 +92,11 @@ class FlightManager {
             objectIndex++;
         }
         return false;
-
     }
+/**
+ * @param flightIdentifier selection
+ * @return objectIndex
+ */
     private int getVerifiedFlightSelection(String flightIdentifier) {
         int objectIndex = 0;
         while (objectIndex < flights.size()) {
@@ -79,6 +107,9 @@ class FlightManager {
         }
             return objectIndex;
     }
+/**
+ * set customer seat selection
+ */
     public void setSeatInput() {
         System.out.println("Which seat would you like to reserve?");
         if(in.hasNextInt()){
@@ -91,11 +122,17 @@ class FlightManager {
         }
         in.nextLine();
     }
+/**
+* allows customer to re-enter their selection
+*/
     public void retrySeatInput(){
         while (!validInput){
             setSeatInput();
         }
     }
+/** 
+* @param chosenFlight selection
+*/
     public void checkSeatInput(Flight chosenFlight) {
         retrySeatInput();
         int totalSeats = chosenFlight.getTotalSeats();
@@ -114,9 +151,15 @@ class FlightManager {
             }
         }
     }
+/**
+* @return seatSelection
+*/
     public int getSeatInput(){
         return seatSelection;
     }
+/**
+* @return name of customer 
+*/
     public String getNameInput() {
         Scanner in = new Scanner(System.in);
         System.out.println();
