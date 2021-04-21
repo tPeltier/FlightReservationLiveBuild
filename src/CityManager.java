@@ -1,7 +1,9 @@
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
+/**
+* takes in variables and performs input checks on arrival and departure cities 
+*/
 public class CityManager {
     private String cityArrival;
     private String cityDeparture;
@@ -13,7 +15,9 @@ public class CityManager {
     private boolean foundArrival;
     ArrayList<City> cities = new ArrayList<>();
     Scanner in = new Scanner(System.in);
-
+/**
+* adds cities and location coordinates to cities array list
+*/
     public CityManager() {
         cities.add(new City("Atlanta", 33.748997, -84.387985));
         cities.add(new City("Los Angeles", 34.052235, -118.243683));
@@ -26,19 +30,31 @@ public class CityManager {
         cities.add(new City("Las Vegas", 36.1672559, -115.1485163));
         cities.add(new City("Orlando", 28.5421109, -81.3790304));
     }
+/**
+* calls input check methods
+*/
     public void runInputCheck() {
         DepartureInputCheck();
         ArrivalInputCheck();
         duplicateCityCheck();
     }
+/**
+* sets arrival city
+*/
     private void setCityArrival() {
         System.out.println("Select a city from the list to arrive at:");
         cityArrival = in.nextLine();
     }
+/**
+* sets departure city
+*/
     private void setCityDeparture() {
         System.out.println("Select a city from the list to depart from:");
         cityDeparture = in.nextLine();
     }
+/**
+* sets departure city index 
+*/
     private void setCityDepartureIndex() {
         foundDeparture = false;
         int pos = 0;
@@ -51,6 +67,9 @@ public class CityManager {
             }
         }
     }
+/**
+* sets arrival city index
+*/
     private void setCityArrivalIndex() {
         foundArrival = false;
         int pos = 0;
@@ -63,6 +82,9 @@ public class CityManager {
             }
         }
     }
+/**
+* checks if departure city is valid 
+*/
     private void setValidDeparture() {
         if (foundDeparture) {
             validDeparture = true;
@@ -72,6 +94,9 @@ public class CityManager {
             validDeparture = false;
         }
     }
+/**
+* checks if arrival city is valid 
+*/
     private void setValidArrival() {
         if (foundArrival) {
             validArrival = true;
@@ -81,6 +106,9 @@ public class CityManager {
             validArrival = false;
         }
     }
+/**
+* calls departure methods
+*/
     private void DepartureInputCheck() {
         while (!validDeparture) {
             setCityDeparture();
@@ -88,6 +116,9 @@ public class CityManager {
             setValidDeparture();
         }
     }
+/**
+* calls arrival methods
+*/
     private void ArrivalInputCheck() {
         while (!validArrival) {
             setCityArrival();
@@ -95,12 +126,21 @@ public class CityManager {
             setValidArrival();
         }
     }
+/**
+* @return departure city index
+*/
     public int getDepartureCityIndex() {
         return departureCityIndex;
     }
+/**
+* @return arrival city index
+*/
     public int getArrivalCityIndex() {
         return arrivalCityIndex;
     }
+/**
+* input validation to prevent flying to and from the same city
+*/
     private void duplicateCityCheck() {
         boolean duplicateFound;
         do {
@@ -116,6 +156,9 @@ public class CityManager {
                 }
         } while(duplicateFound);
     }
+/**
+*displays cities
+*/
     public void displayCities() {
         System.out.println("Cities flights are available from: ");
         System.out.println("==================================");
@@ -124,12 +167,21 @@ public class CityManager {
         }
         System.out.println("==================================");
     }
+/**
+* @return cities
+*/
     public ArrayList<City> getCityList() {
         return cities;
     }
+/**
+* @return arrival city
+*/
     public City getArrivalCity() {
         return cities.get(arrivalCityIndex);
     }
+/**
+* @return departure city
+*/
     public City getDepartureCity() {
         return cities.get(departureCityIndex);
     }
