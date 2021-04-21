@@ -5,12 +5,23 @@ import java.util.Scanner;
 public class FlightReservation {
 
     public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
 
         //todo replace missing print statements
+        //todo make printlns printfs in some places(for spacing)
+
+        System.out.println("Welcome to our ticket reservation system!");
+        System.out.println("Would you like to view a tutorial on how to use the system? (Y/N) ");
+        String viewTutorial = in.nextLine();
+        Introduction intro = new Introduction();
+        if(viewTutorial.trim().equalsIgnoreCase("y")){
+            intro.printTutorial();
+        }
+
 
         String repeat = "";
         do {
-            Scanner in = new Scanner(System.in);
+
 
             FlightManager flightManager = new FlightManager();
             CityManager cityManager = new CityManager();
