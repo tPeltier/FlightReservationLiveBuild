@@ -9,8 +9,6 @@ import java.util.Scanner;
 public class FlightReservation {
     public static void main(String[] args) {
 
-        //todo maybe make y/n input get charAt(0) so that the user can input yes instead of just y
-
         Scanner in = new Scanner(System.in);
         System.out.println("==================================================================");
         System.out.println("Welcome to our ticket reservation system!");
