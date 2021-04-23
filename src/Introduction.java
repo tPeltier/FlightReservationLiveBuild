@@ -6,7 +6,7 @@ public class Introduction {
         //empty
     }
  /**
- * print statemtns for user clarification
+ * print statements for user clarification
  */
     public void printTutorial(){
         System.out.printf("%nIn this intro, we will show you how to operate and navigate through our system, to successfully reserve a ticket.%n");
